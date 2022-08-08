@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AvastTest</string>
+    <string name="edit_text_hint">Input string</string>
+    <string name="hint_edit_text_number_one">Input number one</string>
+    <string name="hint_edit_text_number_two">Input number two</string>
+    <string name="text_button_parse_button">Parse</string>
+    <string name="text_button_bit_manipulation">Bit manipulation</string>
+    <string name="text_button_bit_count">Count</string>
+    <string name="title_activity_bit_manipulation">BitManipulationActivity</string>
+    <string name="title_activity_string_manipulation">StringManipulationActivity</string>
+    <string name="text_output">Output: %s</string>
+</resources>
