@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.parseButton.setOnClickListener {
-            wordBreak(binding.inputEditText.text.toString(), dictionary)
+            runWordBreakProblem(binding.inputEditText.text.toString(), dictionary)
             binding.resultTextview.text = getString(R.string.text_output, result.toString())
         }
 
@@ -46,8 +46,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // dynamic programing solution with with time complexity O(n^2) && space complexity O(n)
-    private fun wordBreak(input: String, dictionary: List<String>): Boolean {
+    private fun runWordBreakProblem(input: String, dictionary: List<String>) {
+        if (result.isNotEmpty()) result.clear()
+        //wordBreak(input, dictionary)
+        wordBreakWithRecursion(input, dictionary)
+    }
+
+    // dynamic programing solution with time complexity O(n^2) & space complexity O(n)
+    private fun wordBreakWithDP(input: String, dictionary: List<String>): Boolean {
         if (result.isNotEmpty()) result.clear()
         val dp = BooleanArray(input.length + 1)
         dp[0] = true
@@ -62,5 +68,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return dp[input.length]
+    }
+
+    // recursion solution with time complexity O(n) & space complexity O(1)
+    private fun wordBreakWithRecursion(input: String, dictionary: List<String>) {
+        if (input.isEmpty()) return
+        for (i in 1..input.length) {
+            val prefix = input.substring(0, i)
+            if (dictionary.contains(prefix)) {
+                result.add(prefix)
+                wordBreakWithRecursion(input.substring(i), dictionary)
+            }
+        }
     }
 }
